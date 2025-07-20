@@ -17,4 +17,4 @@ spec:
               service:
                 name: gitops-project     # 对应上面创建的service名称
                 port:
-                  number: 10088
+                  number: 8080

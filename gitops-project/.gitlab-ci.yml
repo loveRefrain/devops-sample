@@ -30,9 +30,6 @@ build code: #自定义的步骤名称
 
 docker build:
   stage: build
-  image: docker:24.0.5
-  services:
-    - docker:24.0.5-dind
   script:
     - docker build -t $app_name:$app_version .  #此步骤通过项目源码内的Dockerfile文件编译docker镜像
   needs: #gitlab流水线文件内置关键字，作用为此步骤所依赖的步骤，只有当被依赖的步骤完成后，此步骤才会执行
@@ -40,9 +37,6 @@ docker build:
 
 docker tag:
   stage: build
-  image: docker:24.0.5
-  services:
-    - docker:24.0.5-dind
   script:
     - echo "registry：" $registry
     - echo "registry：" $ci_registry
@@ -52,9 +46,6 @@ docker tag:
 
 docker push:
   stage: build
-  image: docker:24.0.5
-  services:
-    - docker:24.0.5-dind
   script:
     - echo "ci_registry_passwd：" $ci_registry_passwd
     - echo "ci_registry_name：" $ci_registry_name
@@ -66,9 +57,6 @@ docker push:
 
 deploy dev:
   stage: deploy
-  image: alpine:latest
-  before_install:
-    - apk add --no-cache git curl
   before_script: #gitlab流水线内置关键字，作用为在该步骤执行流水线操作前所依赖步骤。这里需要runner通过修改kustomization.yaml文件，来修改镜像版本信息
     #所以需要在修改镜像版本信息后，重新push代码
     - git remote set-url origin http://${CI_USERNAME}:${CI_PASSWORD}@192.168.31.105/apidemon/gitops-project.git #设置远程仓库地址，CI_USERNAME为代码仓库登录用户名，需要在gitlab自定义全局变量，CI_PASSWORD为代码仓库登录密码，需要在gitlab自定义全局变量
