@@ -1,7 +1,12 @@
-FROM centos:centos7
+FROM openjdk:17-jre-slim
 
-ADD ./apidemo /root
+WORKDIR /app
 
-EXPOSE 10088
+# 复制JAR文件
+COPY target/*.jar app.jar
 
-CMD ["/root/gitops-project"]
+# 暴露端口
+EXPOSE 8080
+
+# 启动应用
+CMD ["java", "-jar", "app.jar"]
