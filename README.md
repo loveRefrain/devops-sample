@@ -2,10 +2,11 @@
 
 ## 项目概述
 
-这是一个专为 DevOps 工程师面试准备的完整项目案例，展示了两种主流的 DevOps 实践方案：
-
-1. **GitOps 方案** - 基于 GitLab + ArgoCD + Kubernetes 的现代化 GitOps 实践
-2. **Jenkins 方案** - 基于 Jenkins + Kubernetes 的传统 CI/CD 实践
+这是一个演示 **GitOps** 和 **传统 Jenkins CI/CD** 对比的 DevOps 示例项目，用于技术面试或学习参考。  
+涵盖以下核心实践：
+- ✅ **GitOps 流程**：使用 ArgoCD 实现 Kubernetes 应用的自动化部署
+- ✅ **Jenkins 流水线**：从代码构建到 Kubernetes 部署的全流程
+- ✅ **云原生技术栈**：Kubernetes、Docker、Kustomize（多环境支持）
 
 ## 项目架构
 
