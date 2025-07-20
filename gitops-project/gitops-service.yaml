@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: gitops-project
+  name: gitops-project
+  labels:
+    app: gitops-project
+spec:
+  type: NodePort
+  ports:
+    - name: gitops-project
+      port: 10088
+      targetPort: 10088
+      nodePort: 30080
+  selector:
+    app: gitops-project
